@@ -71,7 +71,7 @@ confluent.controlcenter.schema.registry.ssl.key.password={{control_center_keysto
 
 {% endfor %}
 {% else %}
-confluent.controlcenter.connect.default.cluster={% for host in groups['kafka_connect'] %}{% if loop.index > 1%},{% endif %}{{ kafka_connect_http_protocol }}://{{ host }}:{{ kafka_connect_rest_port }}{% endfor %}
+confluent.controlcenter.connect.cluster={% for host in groups['kafka_connect'] %}{% if loop.index > 1%},{% endif %}{{ kafka_connect_http_protocol }}://{{ host }}:{{ kafka_connect_rest_port }}{% endfor %}
 
 {% endif %}
 {% endif %}
@@ -85,7 +85,7 @@ confluent.controlcenter.connect.default.cluster={% for host in groups['kafka_con
 
 {% endfor %}
 {% else %}
-confluent.controlcenter.ksql.default.url={% for host in groups['ksql'] %}{% if loop.index > 1%},{% endif %}{{ ksql_http_protocol }}://{{ host }}:{{ ksql_listener_port }}{% endfor %}
+confluent.controlcenter.ksql.url={% for host in groups['ksql'] %}{% if loop.index > 1%},{% endif %}{{ ksql_http_protocol }}://{{ host }}:{{ ksql_listener_port }}{% endfor %}
 
 {% endif %}
 {% endif %}
