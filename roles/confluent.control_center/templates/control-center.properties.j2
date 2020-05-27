@@ -86,6 +86,6 @@ confluent.controlcenter.connect.cluster={% for host in groups['kafka_connect'] %
 {% endfor %}
 {% else %}
 confluent.controlcenter.ksql.url={% for host in groups['ksql'] %}{% if loop.index > 1%},{% endif %}{{ ksql_http_protocol }}://{{ host }}:{{ ksql_listener_port }}{% endfor %}
-
+confluent.controlcenter.ksql.advertised.url={% for host in groups['ksql'] %}{% if loop.index > 1%},{% endif %}{{ ksql_http_protocol }}://{{ ansible_host }}:{{ ksql_listener_port }}{% endfor %}
 {% endif %}
 {% endif %}

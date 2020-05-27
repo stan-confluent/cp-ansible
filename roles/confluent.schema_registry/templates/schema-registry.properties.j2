@@ -21,7 +21,7 @@ ssl.client.auth=false
 {% endif %}
 
 # Kafka Broker Configuration
-kafkastore.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{kafka_broker_listeners[schema_registry_kafka_listener_name]['port']}}{% endfor %}
+kafkastore.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{kafka_broker_listeners[schema_registry_kafka_listener_name] | kafka_protocol_defaults(sasl_protocol, ssl_enabled) }}://{{ host }}:{{kafka_broker_listeners[schema_registry_kafka_listener_name]['port']}}{% endfor %}
 
 kafkastore.security.protocol={{kafka_broker_listeners[schema_registry_kafka_listener_name] | kafka_protocol_defaults(sasl_protocol, ssl_enabled) }}
 {% if kafka_broker_listeners[schema_registry_kafka_listener_name]['ssl_enabled'] | default(ssl_enabled) | bool %}
