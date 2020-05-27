@@ -110,6 +110,10 @@ consumer.sasl.kerberos.service.name={{kerberos_kafka_broker_primary}}
 consumer.sasl.mechanism=SCRAM-SHA-256
 {% endif %}
 
+# Enable monitoring
+producer.interceptor.classes=io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
+consumer.interceptor.classes=io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
+
 # Producer Monitoring Configuration
 producer.confluent.monitoring.interceptor.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{kafka_broker_listeners[kafka_connect_kafka_listener_name]['port']}}{% endfor %}
 

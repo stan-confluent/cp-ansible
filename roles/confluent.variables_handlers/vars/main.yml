@@ -59,6 +59,7 @@ kafka_connect_packages:
   - confluent-control-center-fe
   - confluent-control-center
   - confluent-schema-registry
+  - confluent-control-center
 kafka_connect_default_user: cp-kafka-connect
 kafka_connect_default_group: confluent
 kafka_connect:
@@ -70,6 +71,7 @@ ksql_service_name: confluent-ksql
 ksql_packages:
   - confluent-common
   - confluent-rest-utils
+  - confluent-control-center
 #  - confluent-metadata-service
   - "{{ kafka_broker_main_package }}"
   - confluent-ksql
